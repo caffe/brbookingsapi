@@ -1,0 +1,1224 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Brasil Bookings</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #f8f8f2;
+  background-color: #272822;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="images/logo.png" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='http://www.brasilbookings.com.br'>Solicite uma API Key de desenvolvedor</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="introdu-o">Introdução</h1>
+
+<p>Bem-vindo(a) a API do Brasil Bookings!</p>
+
+<h1 id="autentica-o">Autenticação</h1>
+
+<blockquote>
+<p>Para autenticação utilize o seguinte código:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST https://app.brbookings.com/api/CAMINHODOOBJETO <span class="se">\</span>
+-d <span class="s1">'api_key=MINHAAPIKEY'</span> <span class="se">\</span>
+</code></pre>
+
+<blockquote>
+<p>Você deve substituir <code class="prettyprint">MINHAAPIKEY</code> por sua API Key, e deve substituir <code class="prettyprint">CAMINHODOOBJETO</code> pelo objeto que você deseja acessar.</p>
+</blockquote>
+<pre class="highlight shell"><code>
+</code></pre>
+
+<p>A API do Brasil Bookings utiliza API Keys para autorizar o acesso à API.
+A API Key deve ser informada em todos os requests ao servidor, no header da requisição, conforme o exemplo a seguir:</p>
+
+<p><code class="prettyprint">X-API-KEY: MINHAAPIKEY</code></p>
+
+<aside class="notice">
+Você deve substituir <code>MINHAAPIKEY</code> com a sua API key exclusiva.
+</aside>
+
+<h1 id="tipos-de-quarto">Tipos de Quarto</h1>
+
+<p>Através da rota <code class="prettyprint">/rooms_api/rooms</code> e suas derivadas, você pode retornar os dados básicos dos tipos de quartos existentes.</p>
+
+<h2 id="objeto-rooms_api-rooms">Objeto <code class="prettyprint">rooms_api/rooms</code></h2>
+
+<blockquote>
+<p>GET https://app.brbookings.com/api/rooms_api/rooms</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>RESPOSTA (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"RoomsRS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rooms"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"Rooms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"Success"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"HotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"0"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quarto 1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Adults"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Children"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quarto 2"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Adults"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Children"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quarto 3"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Adults"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Children"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quarto 4"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Adults"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Children"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Ao consultar este método, este será o objeto que você irá receber como resposta.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Propriedade</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>HotelCode</strong> <br>string</td>
+<td>Código do hotel no Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>ID</strong> <br>integer</td>
+<td>ID do Quarto no Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Title</strong> <br>string</td>
+<td>Título do quarto</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Adults</strong> <br>integer</td>
+<td>Quantidade máxima de hóspedes adultos do quarto</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Children</strong> <br>integer</td>
+<td>Quantidade máxima de hóspedes crianças do quarto</td>
+</tr>
+</tbody></table>
+
+<h1 id="tipos-de-tarifa">Tipos de Tarifa</h1>
+
+<p>Através da rota <code class="prettyprint">/rate_plans_api/rate_plans</code> e suas derivadas, você pode retornar os dados básicos dos tipos de tarifas existentes.</p>
+
+<h2 id="objeto-rate_plans_api-rate_plans">Objeto <code class="prettyprint">rate_plans_api/rate_plans</code></h2>
+
+<blockquote>
+<p>GET https://app.brbookings.com/api/rate_plans_api/rate_plans (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>RESPOSTA (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"RatePlansRS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rates"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"Rates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"Success"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"HotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"0"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tarifa Padrão"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"151"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tarifa Corporativa"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Ao consultar este método, este será o objeto que você irá receber como resposta.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Propriedade</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>HotelCode</strong> <br>string</td>
+<td>Código do hotel no Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>ID</strong> <br>integer</td>
+<td>ID do Quarto no Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Name</strong> <br>string</td>
+<td>Nome do tipo de tarifa</td>
+</tr>
+</tbody></table>
+
+<h1 id="atulizar-disponibilidade">Atulizar Disponibilidade</h1>
+
+<p>Através da rota <code class="prettyprint">/rate_plans_api/update_availability</code>, você pode atualizar a disponibilidade dos quartos por período.</p>
+
+<h2 id="atualizando-disponibilidades">Atualizando disponibilidades</h2>
+
+<blockquote>
+<p>POST https://app.brbookings.com/api/rate_plans_api/update_availability (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"AvailabilityRQ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"AvailStatusMessages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"HotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"AvailStatusMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"BookingLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"StatusApplicationControl"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-20"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"End"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-21"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"InvCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"BookingLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"StatusApplicationControl"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-21"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"End"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-22"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"InvCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"BookingLimit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"StatusApplicationControl"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-22"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"End"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-23"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"InvCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>RESPOSTA (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"AvailabilityRS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Success"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Propriedade</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>HotelCode</strong> <br>string</td>
+<td>Código do hotel no Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>BookingLimit</strong> <br>integer</td>
+<td>Quantidade de unidades disponíveis para o quarto</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Start</strong> <br>string</td>
+<td>Data de início da disponibilidade</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>End</strong> <br>string</td>
+<td>Data final da disponibilidade</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>InvCode</strong> <br>string</td>
+<td>ID do tipo de quarto no Brasil Bookings</td>
+</tr>
+</tbody></table>
+
+<h1 id="atualizar-tarifas">Atualizar Tarifas</h1>
+
+<p>Através da rota <code class="prettyprint">/rates_api/update_rates</code>, você pode atualizar as tarifas dos quartos por período e número de ocupantes.</p>
+
+<h2 id="atualizando-tarifas">Atualizando tarifas</h2>
+
+<blockquote>
+<p>POST https://app.brbookings.com/api/rates_api/update_rates (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"RatesRQ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"RatePlans"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"HotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"RatePlan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"RatePlanCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Rates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"Rate"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"Start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-28"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"End"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-29"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"InvCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"BaseByGuestAmts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"BaseByGuestAmt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150.00"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"NumberOfGuests"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.00"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"NumberOfGuests"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30.00"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"NumberOfGuests"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>RESPOSTA (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"RatesRS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Success"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Propriedade</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>HotelCode</strong> <br>string</td>
+<td>Código do hotel no Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>RatePlanCode</strong> <br>integer</td>
+<td>ID do tipo de tarifa</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Start</strong> <br>string</td>
+<td>Data de início da disponibilidade</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>End</strong> <br>string</td>
+<td>Data final da disponibilidade</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>InvCode</strong> <br>string</td>
+<td>ID do tipo de quarto no Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Amount</strong> <br>float</td>
+<td>Valor da tarifa</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>NumberOfGuests</strong> <br>integer</td>
+<td>Número de ocupantes da tarifa</td>
+</tr>
+</tbody></table>
+
+<h1 id="atualizar-restri-es-e-estadia-m-nima">Atualizar Restrições e Estadia Mínima</h1>
+
+<p>Através da rota <code class="prettyprint">/restrictions_api/update_restrictions</code>, você pode atualizar as restrições e estadias mínimas dos quartos por período e tipo de tarifa.</p>
+
+<h2 id="atualizando-restri-es-e-estadias-m-nimas">Atualizando restrições e estadias mínimas</h2>
+
+<blockquote>
+<p>POST https://app.brbookings.com/api/restrictions_api/update_restrictions (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"RestrictionsRQ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"AvailStatusMessages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"HotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"AvailStatusMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"StatusApplicationControl"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-02"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"End"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-03"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"RatePlanCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"InvCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"LengthsOfStay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"LengthOfStay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"Time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"TimeUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Day"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"MinMaxMessageType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MinLOS"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"StatusApplicationControl"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-02"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"End"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-03"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"RatePlanCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"InvCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"RestrictionStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+              </span><span class="nt">"Restriction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Arrival"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"Restriction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Departure"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Close"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+           </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>RESPOSTA (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"RestrictionsRS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Success"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Propriedade</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>HotelCode</strong> <br>string</td>
+<td>Código do hotel no Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>RatePlanCode</strong> <br>integer</td>
+<td>ID do tipo de tarifa</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>InvCode</strong> <br>string</td>
+<td>ID do tipo de quarto no Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Start</strong> <br>string</td>
+<td>Data de início do período</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>End</strong> <br>string</td>
+<td>Data final do período</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Time</strong> <br>integer</td>
+<td>Quantidade de dias que deve se aplicar estadia mínima</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>TimeUnit</strong> <br>string</td>
+<td>Tipo de unidade de tempo <br> <strong>Valores possíveis:</strong> <code class="prettyprint">Day</code></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>MinMaxMessageType</strong> <br>string</td>
+<td>Tipo de restrição <br> <strong>Valores possíveis:</strong> <code class="prettyprint">MinLOS</code></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Restriction</strong> <br>string</td>
+<td>Tipo de bloqueio <br> <strong>Valores possíveis:</strong> <code class="prettyprint">Arrival</code>, <code class="prettyprint">Departure</code></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Status</strong> <br>string</td>
+<td>Status da restrição <br> <strong>Valores possíveis:</strong> <code class="prettyprint">Open</code>, <code class="prettyprint">Close</code></td>
+</tr>
+</tbody></table>
+
+<h1 id="bloqueio-desbloqueio-de-tarifas">Bloqueio/Desbloqueio de Tarifas</h1>
+
+<p>Através da rota <code class="prettyprint">/block_rates_api/block_rates</code>, você pode bloquear ou desbloquear tarifas por período.</p>
+
+<h2 id="atualizando-bloqueios-desbloqueios-de-tarifas">Atualizando bloqueios/desbloqueios de tarifas</h2>
+
+<blockquote>
+<p>POST https://app.brbookings.com/api/block_rates_api/block_rates (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"BlockRateRQ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"AvailStatusMessages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"HotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"AvailStatusMessage"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"StatusApplicationControl"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-20"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"End"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-21"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"RatePlanCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"InvCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"RestrictionStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Close"</span><span class="w"> </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"StatusApplicationControl"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-21"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"End"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-22"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"RatePlanCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"InvCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"RestrictionStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open"</span><span class="w"> </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>RESPOSTA (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"BlockRateRS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Success"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Propriedade</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>HotelCode</strong> <br>string</td>
+<td>Código do hotel no Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>RatePlanCode</strong> <br>integer</td>
+<td>ID do tipo de tarifa</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>InvCode</strong> <br>string</td>
+<td>ID do tipo de quarto no Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Start</strong> <br>string</td>
+<td>Data de início do período</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>End</strong> <br>string</td>
+<td>Data final do período</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Status</strong> <br>string</td>
+<td>Status da restrição <br> <strong>Valores possíveis:</strong> <code class="prettyprint">Open</code>, <code class="prettyprint">Close</code></td>
+</tr>
+</tbody></table>
+
+<h1 id="reservas">Reservas</h1>
+
+<p>Através da rota <code class="prettyprint">/reservations_api/reservations</code>, retornar as reservas feitas no Brasil Bookings.</p>
+
+<h2 id="baixa-de-reservas">Baixa de Reservas</h2>
+
+<blockquote>
+<p>GET https://app.brbookings.com/api/reservations_api/reservations</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>RESPOSTA (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"ReservationRS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Reservations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"Channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"CreatedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-13T00:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ReserveId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"PaymentMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CC"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"TotalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1099.00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"CustomerFirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Héloïse Kukasz"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"CustomerMiddleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"CustomerLastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kukasz"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"CustomerPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"CustomerEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"Guests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"GuestResID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"142"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"GuestName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Héloïse Kukasz"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"GuestMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"GuestResID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"144"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"GuestName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Camila Silva"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"GuestMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"Rooms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"RoomTypeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"CheckinDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-02"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"CheckoutDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-09"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"RoomTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do quarto"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"Adults"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"Children"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"GuestIDs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"142"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"144"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"DailyRates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-02"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"totalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"157.00"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-03"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"totalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"157.00"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-04"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"totalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"157.00"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-05"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"totalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"157.00"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-06"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"totalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"157.00"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-07"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"totalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"157.00"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-08"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"totalValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"157.00"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"CardType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"CardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890123456"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"CardHolderName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Despegar.com"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"ExpireDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08/20"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Propriedade</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>Channel</strong> <br>integer</td>
+<td>ID do Canal onde a reserva foi feita <br> Veja na tabela de Canais, os valores possíveis</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>CreatedOn</strong> <br>string</td>
+<td>Data da reserva</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Status</strong> <br>string</td>
+<td>Status da reserva <br> <strong>Valores possíveis:</strong> <code class="prettyprint">new</code>, <code class="prettyprint">modify</code>, <code class="prettyprint">cancel</code></td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>ReserveId</strong> <br>string</td>
+<td>ID da reserva</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Comments</strong> <br>string</td>
+<td>Comentários da reserva</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>PaymentMethod</strong> <br>string</td>
+<td>Tipo de pagamento <br> Veja na tabela de Formas de Pagamento, os valores possíveis</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>TotalValue</strong> <br>float</td>
+<td>Valor total da reserva</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Currency</strong> <br>string</td>
+<td>Moeda</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>CustomerFirstName</strong> <br>string</td>
+<td>Primeiro nome do cliente</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>CustomerMiddleName</strong> <br>string</td>
+<td>Nome do meio do cliente</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>CustomerLastName</strong> <br>string</td>
+<td>Sobrenome do cliente</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>CustomerPhone</strong> <br>string</td>
+<td>Telefone do cliente</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>CustomerEmail</strong> <br>string</td>
+<td>E-mail do cliente</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>GuestResID</strong> <br>integer</td>
+<td>ID do cliente dentro da reserva</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>GuestName</strong> <br>string</td>
+<td>Nome completo do hóspede</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>GuestMessage</strong> <br>string</td>
+<td>Mensagem do hóspede</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>RoomTypeId</strong> <br>integer</td>
+<td>ID do quarto no Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>CheckinDate</strong> <br>string</td>
+<td>Data de Checkin</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>CheckoutDate</strong> <br>string</td>
+<td>Data do Checkout</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>RoomTitle</strong> <br>string</td>
+<td>Nome do quarto</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Adults</strong> <br>string</td>
+<td>Quantidade de adultos no quarto</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Children</strong> <br>integer</td>
+<td>Quantidade de crianças no quarto</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>GuestIDs</strong> <br>integer</td>
+<td>IDs dos hóspedes na reserva. Serve para identificar quais hóspedes estão em cada quarto.</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>DailyRates - date</strong> <br>string</td>
+<td>Data da diária</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>DailyRates - totalValue</strong> <br>float</td>
+<td>Valor da diária</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>CardType</strong> <br>string</td>
+<td>Bandeira do cartão  de crédito <br> Veja na tabela de Bandeiras, os valores possíveis</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>CardNumber</strong> <br>string</td>
+<td>Número do cartão de crédito</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>CardHolderName</strong> <br>string</td>
+<td>Nome do titular do cartão de crédito</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>ExpireDate</strong> <br>string</td>
+<td>Data de expiração do cartão de crédito</td>
+</tr>
+</tbody></table>
+
+<p><strong>CANAIS</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">ID do Canal</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>0</strong> <br>integer</td>
+<td>Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>1</strong> <br>integer</td>
+<td>Booking.com</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>3</strong> <br>integer</td>
+<td>Decolar.com</td>
+</tr>
+</tbody></table>
+
+<p><strong>STATUS</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Status</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>all</strong></td>
+<td>Todas as reservas</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>new</strong></td>
+<td>Reservas novas</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>modify</strong></td>
+<td>Reservas modificadas</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>cancel</strong></td>
+<td>Reservas canceladas</td>
+</tr>
+</tbody></table>
+
+<p><strong>FORMAS DE PAGAMENTO</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Status</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>PP</strong></td>
+<td>PayPal</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>PPL</strong></td>
+<td>PayPal Plus</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>CC</strong></td>
+<td>Cartão de Crédito</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>DP</strong></td>
+<td>Depósito</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>BB</strong></td>
+<td>BBPAY</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>NA</strong></td>
+<td>Não informado</td>
+</tr>
+</tbody></table>
+
+<p><strong>BANDEIRAS</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Status</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>AX</strong></td>
+<td>American Express</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>BC</strong></td>
+<td>Bank Card</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>BL</strong></td>
+<td>Card Bleu</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>CB</strong></td>
+<td>Carte Blanche</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>DN</strong></td>
+<td>Diners</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>DS</strong></td>
+<td>Discover Card</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>EC</strong></td>
+<td>Eurocard</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>JC</strong></td>
+<td>Japanese Credit Bureau Credit Card</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>MA</strong></td>
+<td>Maestro (Switch)</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>MC</strong></td>
+<td>Master Card</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>TP</strong></td>
+<td>Universal Air Travel Card</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>VI</strong></td>
+<td>Visa</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>NA</strong></td>
+<td>Não informado</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+    Você pode baixar as reservas por status. Para isso você deve enviar a requisição como no exemplo abaixo: <br>
+    <b>https://app.brbookings.com/api/reservations_api/reservations?status=all</b>
+</aside>
+
+<h2 id="confirma-o-da-baixa-de-reservas">Confirmação da baixa de reservas</h2>
+
+<p>Após baixar uma reserva, você deve enviar um <code class="prettyprint">POST</code> confirmando que efetuou a baixa da mesma em nosso sistema.</p>
+
+<blockquote>
+<p>POST https://app.brbookings.com/api/reservations_api/reservations (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"ReservationRQ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Reservation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"HotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ReserveId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bo415874340"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"HotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ReserveId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14504642041"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>RESPOSTA (exemplo)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"ReservationRS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Reservations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"ReserveId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bo415874340"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"HotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Success"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"ReserveId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14504642041"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"HotelCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"Success"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Propriedade</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><strong>HotelCode</strong> <br>string</td>
+<td>Código do hotel no Brasil Bookings</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>ReserveId</strong> <br>integer</td>
+<td>ID do da reserva</td>
+</tr>
+<tr>
+<td style="text-align: right"><strong>Success</strong> <br>string</td>
+<td>Indica que a baixa da reserva foi concluída com sucesso</td>
+</tr>
+</tbody></table>
+
+          <h1 id="erros">Erros</h1>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Significado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BBEA1</td>
+<td>Há X reserva(s) pendentes de sincronização. Você deve sincronizar todas as reservas pendentes antes de atualizar a disponibilidade dos quartos.</td>
+</tr>
+<tr>
+<td>BBEA2</td>
+<td>Nenhuma disponibilidade pôde ser atualizada.</td>
+</tr>
+<tr>
+<td>BBEA3</td>
+<td>A disponibilidade não pôde ser atualizada. A mensagem varia de acordo com o que impediu a atualização de ser realizada.</td>
+</tr>
+<tr>
+<td>BBEA4</td>
+<td>Quantidade enviada é inválida, ou está faltando.</td>
+</tr>
+<tr>
+<td>BBER1</td>
+<td>Valores por pessoa por noite não enviados na requisição.</td>
+</tr>
+<tr>
+<td>BBER2</td>
+<td>Nenhuma tarifa pôde ser atualizada.</td>
+</tr>
+<tr>
+<td>BBER3</td>
+<td>O valor da tarifa não foi especificado.</td>
+</tr>
+<tr>
+<td>BBER4</td>
+<td>O número de hóspedes para a tarifa não foi especificado.</td>
+</tr>
+<tr>
+<td>BBER5</td>
+<td>A tarifa não pôde ser atualizada. A mensagem varia de acordo com o que impediu a atualização de ser realizada.</td>
+</tr>
+<tr>
+<td>BBERE1</td>
+<td>Nenhuma restrição pôde ser atualizada.</td>
+</tr>
+<tr>
+<td>BBERE2</td>
+<td>Dados da restrição inválidos, ou não enviados.</td>
+</tr>
+<tr>
+<td>BBERE3</td>
+<td>A restrição não pôde ser atualizada. A mensagem varia de acordo com o que impediu a atualização de ser realizada.</td>
+</tr>
+<tr>
+<td>BBERE4</td>
+<td>Estadia mínima ou bloqueio de checkin/checkout não enviados.</td>
+</tr>
+<tr>
+<td>BBEBR1</td>
+<td>Nenhuma disponibilidade pôde ser atualizada.</td>
+</tr>
+<tr>
+<td>BBEBR2</td>
+<td>O bloqueio/desbloqueio não pôde ser feito. A mensagem varia de acordo com o que impediu a atualização de ser realizada.</td>
+</tr>
+<tr>
+<td>BBEBR3</td>
+<td>Status da Tarifa enviado é inválida, ou está faltando.</td>
+</tr>
+<tr>
+<td>BBERO1</td>
+<td>Nenhum item encontrado</td>
+</tr>
+<tr>
+<td>BBERO2</td>
+<td>Nenhum quarto retornado. A mensagem varia de acordo com o que impediu a atualização de ser realizada.</td>
+</tr>
+<tr>
+<td>BBERA1</td>
+<td>Nenhum item encontrado.</td>
+</tr>
+<tr>
+<td>BBERA2</td>
+<td>Nenhum tipo de tarifa encontrado. A mensagem varia de acordo com o que impediu a atualização de ser realizada.</td>
+</tr>
+<tr>
+<td>BBERES1</td>
+<td>Nenhuma reserva encontrada.</td>
+</tr>
+<tr>
+<td>BBERES2</td>
+<td>Nenhuma reserva retornada. A mensagem varia de acordo com o que impediu a atualização de ser realizada.</td>
+</tr>
+<tr>
+<td>BBERES3</td>
+<td>Nenhuma reserva pôde ser confirmada.</td>
+</tr>
+<tr>
+<td>BBERES4</td>
+<td>A reserva não pôde ser confirmada.</td>
+</tr>
+<tr>
+<td>BBE1</td>
+<td>A data inicial deve ser menor que a final, ou está faltando.</td>
+</tr>
+<tr>
+<td>BBE2</td>
+<td>Data final inválida, ou está faltando.</td>
+</tr>
+<tr>
+<td>BBE3</td>
+<td>Data inicial inválida, ou está faltando.</td>
+</tr>
+<tr>
+<td>BBE4</td>
+<td>ID do quarto é inválido, ou está faltando.</td>
+</tr>
+<tr>
+<td>BBE5</td>
+<td>ID do tipo de tarifa não enviado na requisição.</td>
+</tr>
+<tr>
+<td>BBE6</td>
+<td>Data inicial ou Final inválidas.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

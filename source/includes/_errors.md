@@ -1,20 +1,34 @@
-# Errors
+# Erros
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
-
-The Kittn API uses the following error codes:
-
-
-Error Code | Meaning
+Código | Significado
 ---------- | -------
-400 | Bad Request -- Your request sucks
-401 | Unauthorized -- Your API key is wrong
-403 | Forbidden -- The kitten requested is hidden for administrators only
-404 | Not Found -- The specified kitten could not be found
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method
-406 | Not Acceptable -- You requested a format that isn't json
-410 | Gone -- The kitten requested has been removed from our servers
-418 | I'm a teapot
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
+BBEA1 | Há X reserva(s) pendentes de sincronização. Você deve sincronizar todas as reservas pendentes antes de atualizar a disponibilidade dos quartos.
+BBEA2 | Nenhuma disponibilidade pôde ser atualizada.
+BBEA3 | A disponibilidade não pôde ser atualizada. A mensagem varia de acordo com o que impediu a atualização de ser realizada.
+BBEA4 | Quantidade enviada é inválida, ou está faltando.
+BBER1 | Valores por pessoa por noite não enviados na requisição.
+BBER2 | Nenhuma tarifa pôde ser atualizada.
+BBER3 | O valor da tarifa não foi especificado.
+BBER4 | O número de hóspedes para a tarifa não foi especificado.
+BBER5 | A tarifa não pôde ser atualizada. A mensagem varia de acordo com o que impediu a atualização de ser realizada.
+BBERE1 | Nenhuma restrição pôde ser atualizada.
+BBERE2 | Dados da restrição inválidos, ou não enviados.
+BBERE3 | A restrição não pôde ser atualizada. A mensagem varia de acordo com o que impediu a atualização de ser realizada.
+BBERE4 | Estadia mínima ou bloqueio de checkin/checkout não enviados.
+BBEBR1 | Nenhuma disponibilidade pôde ser atualizada.
+BBEBR2 | O bloqueio/desbloqueio não pôde ser feito. A mensagem varia de acordo com o que impediu a atualização de ser realizada.
+BBEBR3 | Status da Tarifa enviado é inválida, ou está faltando.
+BBERO1 | Nenhum item encontrado
+BBERO2 | Nenhum quarto retornado. A mensagem varia de acordo com o que impediu a atualização de ser realizada.
+BBERA1 | Nenhum item encontrado.
+BBERA2 | Nenhum tipo de tarifa encontrado. A mensagem varia de acordo com o que impediu a atualização de ser realizada.
+BBERES1 | Nenhuma reserva encontrada.
+BBERES2 | Nenhuma reserva retornada. A mensagem varia de acordo com o que impediu a atualização de ser realizada.
+BBERES3 | Nenhuma reserva pôde ser confirmada.
+BBERES4 | A reserva não pôde ser confirmada.
+BBE1 | A data inicial deve ser menor que a final, ou está faltando.
+BBE2 | Data final inválida, ou está faltando.
+BBE3 | Data inicial inválida, ou está faltando.
+BBE4 | ID do quarto é inválido, ou está faltando.
+BBE5 | ID do tipo de tarifa não enviado na requisição.
+BBE6 | Data inicial ou Final inválidas.

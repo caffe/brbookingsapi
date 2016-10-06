@@ -1,9 +1,8 @@
 ---
-title: API
+title: API Brasil Bookings
 
 language_tabs:
-  - json
-  - php
+  - shell
 
 toc_footers:
   - <a href='http://www.brasilbookings.com.br'>Solicite uma API Key de desenvolvedor</a>
@@ -11,7 +10,7 @@ toc_footers:
 includes:
   - errors
 
-search: false
+search: true
 ---
 
 # Introdução
@@ -23,13 +22,16 @@ Bem-vindo(a) a API do Brasil Bookings!
 
 > Para autenticação utilize o seguinte código:
 
-```php
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+```shell
+curl -X POST https://app.brbookings.com/api/CAMINHODOOBJETO \
+-d 'api_key=MINHAAPIKEY' \
 ```
 
-> Você deve substituir `MINHAAPIKEY` por sua API Key.
+> Você deve substituir `MINHAAPIKEY` por sua API Key, e deve substituir `CAMINHODOOBJETO` pelo objeto que você deseja acessar.
+
+```shell
+
+```
 
 A API do Brasil Bookings utiliza API Keys para autorizar o acesso à API.
 A API Key deve ser informada em todos os requests ao servidor, no header da requisição, conforme o exemplo a seguir:
@@ -46,7 +48,13 @@ Através da rota `/rooms_api/rooms` e suas derivadas, você pode retornar os dad
 
 ## Objeto `rooms_api/rooms`
 
-> Objeto rooms_api/rooms
+> GET https://app.brbookings.com/api/rooms_api/rooms
+
+```json
+
+```
+
+> RESPOSTA (exemplo)
 
 ```json
 {
@@ -100,7 +108,13 @@ Através da rota `/rate_plans_api/rate_plans` e suas derivadas, você pode retor
 
 ## Objeto `rate_plans_api/rate_plans`
 
-> Objeto rate_plans_api/rate_plans
+> GET https://app.brbookings.com/api/rate_plans_api/rate_plans (exemplo)
+
+```json
+
+```
+
+> RESPOSTA (exemplo)
 
 ```json
 {
@@ -136,7 +150,7 @@ Através da rota `/rate_plans_api/update_availability`, você pode atualizar a d
 
 ## Atualizando disponibilidades
 
-> POST
+> POST https://app.brbookings.com/api/rate_plans_api/update_availability (exemplo)
 
 ```json
 {
@@ -174,7 +188,7 @@ Através da rota `/rate_plans_api/update_availability`, você pode atualizar a d
 }
 ```
 
-> RESPONSE
+> RESPOSTA (exemplo)
 
 ```json
 {
@@ -198,7 +212,7 @@ Através da rota `/rates_api/update_rates`, você pode atualizar as tarifas dos 
 
 ## Atualizando tarifas
 
-> POST
+> POST https://app.brbookings.com/api/rates_api/update_rates (exemplo)
 
 ```json
 {
@@ -238,7 +252,7 @@ Através da rota `/rates_api/update_rates`, você pode atualizar as tarifas dos 
 }
 ```
 
-> RESPONSE
+> RESPOSTA (exemplo)
 
 ```json
 {
@@ -262,7 +276,9 @@ Propriedade | Descrição
 
 Através da rota `/restrictions_api/update_restrictions`, você pode atualizar as restrições e estadias mínimas dos quartos por período e tipo de tarifa.
 
-> POST
+## Atualizando restrições e estadias mínimas
+
+> POST https://app.brbookings.com/api/restrictions_api/update_restrictions (exemplo)
 
 ```json
 {
@@ -298,7 +314,7 @@ Através da rota `/restrictions_api/update_restrictions`, você pode atualizar a
             },
             {
               "Restriction": "Departure",
-              "Status": "Open"
+              "Status": "Close"
             }
 		   ]
         }
@@ -308,7 +324,7 @@ Através da rota `/restrictions_api/update_restrictions`, você pode atualizar a
 }
 ```
 
-> RESPONSE
+> RESPOSTA (exemplo)
 
 ```json
 {
@@ -318,11 +334,26 @@ Através da rota `/restrictions_api/update_restrictions`, você pode atualizar a
 }
 ```
 
+Propriedade | Descrição
+-----------: | ---------
+**HotelCode** <br>string | Código do hotel no Brasil Bookings
+**RatePlanCode** <br>integer | ID do tipo de tarifa
+**InvCode** <br>string | ID do tipo de quarto no Brasil Bookings
+**Start** <br>string | Data de início do período
+**End** <br>string | Data final do período
+**Time** <br>integer | Quantidade de dias que deve se aplicar estadia mínima
+**TimeUnit** <br>string | Tipo de unidade de tempo <br> **Valores possíveis:** `Day`
+**MinMaxMessageType** <br>string | Tipo de restrição <br> **Valores possíveis:** `MinLOS`
+**Restriction** <br>string | Tipo de bloqueio <br> **Valores possíveis:** `Arrival`, `Departure`
+**Status** <br>string | Status da restrição <br> **Valores possíveis:** `Open`, `Close`
+
 # Bloqueio/Desbloqueio de Tarifas
 
 Através da rota `/block_rates_api/block_rates`, você pode bloquear ou desbloquear tarifas por período.
 
-> POST
+## Atualizando bloqueios/desbloqueios de tarifas
+
+> POST https://app.brbookings.com/api/block_rates_api/block_rates (exemplo)
 
 ```json
 {
@@ -354,7 +385,7 @@ Através da rota `/block_rates_api/block_rates`, você pode bloquear ou desbloqu
 }
 ```
 
-> RESPONSE
+> RESPOSTA (exemplo)
 
 ```json
 {
@@ -364,144 +395,250 @@ Através da rota `/block_rates_api/block_rates`, você pode bloquear ou desbloqu
 }
 ```
 
-<!--
+Propriedade | Descrição
+-----------: | ---------
+**HotelCode** <br>string | Código do hotel no Brasil Bookings
+**RatePlanCode** <br>integer | ID do tipo de tarifa
+**InvCode** <br>string | ID do tipo de quarto no Brasil Bookings
+**Start** <br>string | Data de início do período
+**End** <br>string | Data final do período
+**Status** <br>string | Status da restrição <br> **Valores possíveis:** `Open`, `Close`
+
+
 # Reservas
 
 Através da rota `/reservations_api/reservations`, retornar as reservas feitas no Brasil Bookings.
 
-> POST
+## Baixa de Reservas
+
+> GET https://app.brbookings.com/api/reservations_api/reservations
 
 ```json
 
 ```
 
-> RESPONSE
-
-```json
-
-```
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> RESPOSTA (exemplo)
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "ReservationRS": {
+    "Reservations": [
+      {
+        "Channel": "3",
+        "CreatedOn": "2015-10-13T00:00:00Z",
+        "Status": "new",
+        "ReserveId": "2",
+        "Comments": "",
+        "PaymentMethod": "CC",
+        "TotalValue": "1099.00",
+        "Currency": "USD",
+        "Customer": {
+          "CustomerFirstName": "Héloïse Kukasz",
+          "CustomerMiddleName": "",
+          "CustomerLastName": "Kukasz",
+          "CustomerPhone": "",
+          "CustomerEmail": ""
+        },
+        "Guests": [
+          {
+            "GuestResID": "142",
+            "GuestName": "Héloïse Kukasz",
+            "GuestMessage": ""
+          },
+          {
+            "GuestResID": "144",
+            "GuestName": "Camila Silva",
+            "GuestMessage": ""
+          }
+        ],
+        "Rooms": [
+          {
+            "RoomTypeId": "1",
+            "CheckinDate": "2015-11-02",
+            "CheckoutDate": "2015-11-09",
+            "RoomTitle": "Nome do quarto",
+            "Adults": 2,
+            "Children": 0,
+            "GuestIDs": [
+              "142",
+              "144"
+            ],
+            "DailyRates": [
+              {
+                "date": "2015-11-02",
+                "totalValue": "157.00"
+              },
+              {
+                "date": "2015-11-03",
+                "totalValue": "157.00"
+              },
+              {
+                "date": "2015-11-04",
+                "totalValue": "157.00"
+              },
+              {
+                "date": "2015-11-05",
+                "totalValue": "157.00"
+              },
+              {
+                "date": "2015-11-06",
+                "totalValue": "157.00"
+              },
+              {
+                "date": "2015-11-07",
+                "totalValue": "157.00"
+              },
+              {
+                "date": "2015-11-08",
+                "totalValue": "157.00"
+              }
+            ]
+          }
+        ],
+        "Payment": {
+          "CardType": "CA",
+          "CardNumber": "1234567890123456",
+          "CardHolderName": "Despegar.com",
+          "ExpireDate": "08/20"
+        }
+      }
+    ]
+  }
 }
 ```
 
-This endpoint retrieves a specific kitten.
+Propriedade | Descrição
+-----------: | ---------
+**Channel** <br>integer | ID do Canal onde a reserva foi feita <br> Veja na tabela de Canais, os valores possíveis
+**CreatedOn** <br>string | Data da reserva
+**Status** <br>string | Status da reserva <br> **Valores possíveis:** `new`, `modify`, `cancel`
+**ReserveId** <br>string | ID da reserva
+**Comments** <br>string | Comentários da reserva
+**PaymentMethod** <br>string | Tipo de pagamento <br> Veja na tabela de Formas de Pagamento, os valores possíveis
+**TotalValue** <br>float | Valor total da reserva
+**Currency** <br>string | Moeda
+**CustomerFirstName** <br>string | Primeiro nome do cliente
+**CustomerMiddleName** <br>string | Nome do meio do cliente
+**CustomerLastName** <br>string | Sobrenome do cliente
+**CustomerPhone** <br>string | Telefone do cliente
+**CustomerEmail** <br>string | E-mail do cliente
+**GuestResID** <br>integer | ID do cliente dentro da reserva
+**GuestName** <br>string | Nome completo do hóspede
+**GuestMessage** <br>string | Mensagem do hóspede
+**RoomTypeId** <br>integer | ID do quarto no Brasil Bookings
+**CheckinDate** <br>string | Data de Checkin
+**CheckoutDate** <br>string | Data do Checkout
+**RoomTitle** <br>string | Nome do quarto
+**Adults** <br>string | Quantidade de adultos no quarto
+**Children** <br>integer | Quantidade de crianças no quarto
+**GuestIDs** <br>integer | IDs dos hóspedes na reserva. Serve para identificar quais hóspedes estão em cada quarto.
+**DailyRates - date** <br>string | Data da diária
+**DailyRates - totalValue** <br>float | Valor da diária
+**CardType** <br>string | Bandeira do cartão  de crédito <br> Veja na tabela de Bandeiras, os valores possíveis
+**CardNumber** <br>string | Número do cartão de crédito
+**CardHolderName** <br>string | Nome do titular do cartão de crédito
+**ExpireDate** <br>string | Data de expiração do cartão de crédito
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+**CANAIS**
 
-### HTTP Request
+ID do Canal | Descrição
+-----------: | ---------
+**0** <br>integer | Brasil Bookings
+**1** <br>integer | Booking.com
+**3** <br>integer | Decolar.com
 
-`GET http://example.com/kittens/<ID>`
+**STATUS**
 
-### URL Parameters
+Status | Descrição
+-----------: | ---------
+**all** | Todas as reservas
+**new** | Reservas novas
+**modify** | Reservas modificadas
+**cancel** | Reservas canceladas
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+**FORMAS DE PAGAMENTO**
 
--->
+Status | Descrição
+-----------: | ---------
+**PP** | PayPal
+**PPL** | PayPal Plus
+**CC** | Cartão de Crédito
+**DP** | Depósito
+**BB** | BBPAY
+**NA** | Não informado
+
+**BANDEIRAS**
+
+Status | Descrição
+-----------: | ---------
+**AX** | American Express
+**BC** | Bank Card
+**BL** | Card Bleu
+**CB** | Carte Blanche
+**DN** | Diners
+**DS** | Discover Card
+**EC** | Eurocard
+**JC** | Japanese Credit Bureau Credit Card
+**MA** | Maestro (Switch)
+**MC** | Master Card
+**TP** | Universal Air Travel Card
+**VI** | Visa
+**NA** | Não informado
+
+<aside class="notice">
+    Você pode baixar as reservas por status. Para isso você deve enviar a requisição como no exemplo abaixo: <br>
+    <b>https://app.brbookings.com/api/reservations_api/reservations?status=all</b>
+</aside>
+
+## Confirmação da baixa de reservas
+
+Após baixar uma reserva, você deve enviar um `POST` confirmando que efetuou a baixa da mesma em nosso sistema.
+
+> POST https://app.brbookings.com/api/reservations_api/reservations (exemplo)
+
+```json
+{
+  "ReservationRQ": {
+    "Reservation": [
+      {
+        "HotelCode": "1",
+        "ReserveId": "bo415874340"
+      },
+      {
+        "HotelCode": "1",
+        "ReserveId": "14504642041"
+      }
+    ]
+  }
+}
+```
+
+> RESPOSTA (exemplo)
+
+```json
+{
+  "ReservationRS": {
+    "Reservations": [
+      {
+        "ReserveId": "bo415874340",
+        "HotelCode": "1",
+        "Success": ""
+      },
+      {
+        "ReserveId": "14504642041",
+        "HotelCode": "1",
+        "Success": ""
+      }
+    ]
+  }
+}
+```
+
+Propriedade | Descrição
+-----------: | ---------
+**HotelCode** <br>string | Código do hotel no Brasil Bookings
+**ReserveId** <br>integer | ID do da reserva
+**Success** <br>string | Indica que a baixa da reserva foi concluída com sucesso
+
+
 
