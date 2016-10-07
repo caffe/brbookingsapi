@@ -99,8 +99,8 @@ Propriedade | Descrição
 **HotelCode** <br>string | Código do hotel no Brasil Bookings
 **ID** <br>integer | ID do Quarto no Brasil Bookings
 **Title** <br>string | Título do quarto
-**Adults** <br>integer | Quantidade máxima de hóspedes adultos do quarto
-**Children** <br>integer | Quantidade máxima de hóspedes crianças do quarto
+**Adults** <br>integer | Quantidade máxima de ocupantes do quarto podendo ser adultos e/ou crianças
+**Children** <br>integer | Quantidade máxima de ocupantes crianças do quarto
 
 # Tipos de Tarifa
 
@@ -141,10 +141,10 @@ Ao consultar este método, este será o objeto que você irá receber como respo
 Propriedade | Descrição
 -----------: | ---------
 **HotelCode** <br>string | Código do hotel no Brasil Bookings
-**ID** <br>integer | ID do Quarto no Brasil Bookings
+**ID** <br>integer | ID do Tipo de Tarifa no Brasil Bookings
 **Name** <br>string | Nome do tipo de tarifa
 
-# Atulizar Disponibilidade
+# Atualizar Disponibilidade
 
 Através da rota `/rate_plans_api/update_availability`, você pode atualizar a disponibilidade dos quartos por período.
 
@@ -525,11 +525,11 @@ Propriedade | Descrição
 **GuestResID** <br>integer | ID do cliente dentro da reserva
 **GuestName** <br>string | Nome completo do hóspede
 **GuestMessage** <br>string | Mensagem do hóspede
-**RoomTypeId** <br>integer | ID do quarto no Brasil Bookings
+**RoomTypeId** <br>integer | ID do tipo de quarto no Brasil Bookings
 **CheckinDate** <br>string | Data de Checkin
 **CheckoutDate** <br>string | Data do Checkout
 **RoomTitle** <br>string | Nome do quarto
-**Adults** <br>string | Quantidade de adultos no quarto
+**Adults** <br>string | Quantidade de ocupantes do quarto
 **Children** <br>integer | Quantidade de crianças no quarto
 **GuestIDs** <br>integer | IDs dos hóspedes na reserva. Serve para identificar quais hóspedes estão em cada quarto.
 **DailyRates - date** <br>string | Data da diária
@@ -637,7 +637,7 @@ Após baixar uma reserva, você deve enviar um `POST` confirmando que efetuou a 
 Propriedade | Descrição
 -----------: | ---------
 **HotelCode** <br>string | Código do hotel no Brasil Bookings
-**ReserveId** <br>integer | ID do da reserva
+**ReserveId** <br>integer | ID da reserva
 **Success** <br>string | Indica que a baixa da reserva foi concluída com sucesso
 
 
