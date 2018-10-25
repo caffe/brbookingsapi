@@ -23,8 +23,9 @@ Bem-vindo(a) a API do Brasil Bookings!
 > Para autenticação utilize o seguinte código:
 
 ```shell
-curl -X POST https://app.brbookings.com/api/CAMINHODOOBJETO \
--d 'api_key=MINHAAPIKEY' \
+curl -X GET \
+  'http://app.brbookings.com/api/CAMINHODOOBJETO' \
+  -H 'x-api-key:MINHAAPIKEY'
 ```
 
 > Você deve substituir `MINHAAPIKEY` por sua API Key, e deve substituir `CAMINHODOOBJETO` pelo objeto que você deseja acessar.
@@ -146,11 +147,11 @@ Propriedade | Descrição
 
 # Atualizar Disponibilidade
 
-Através da rota `/rate_plans_api/update_availability`, você pode atualizar a disponibilidade dos quartos por período.
+Através da rota `/availability_api/update_availability`, você pode atualizar a disponibilidade dos quartos por período.
 
 ## Atualizando disponibilidades
 
-> POST https://app.brbookings.com/api/rate_plans_api/update_availability (exemplo)
+> POST https://app.brbookings.com/api/availability_api/update_availability (exemplo)
 
 ```json
 {
